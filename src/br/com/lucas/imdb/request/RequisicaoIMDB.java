@@ -1,6 +1,7 @@
 package br.com.lucas.imdb.request;
 
 import java.io.File;
+import java.io.PrintWriter;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpClient.Version;
@@ -8,7 +9,6 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,6 +16,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import br.com.lucas.imdb.modelo.Movie;
+import br.com.lucas.imdb.util.HTMLGenerator;
 
 public class RequisicaoIMDB {
 
@@ -37,20 +38,23 @@ public class RequisicaoIMDB {
 		for (int i = 0; i < items.length(); i++) {
 
 			Movie movie = new Movie();
-			movie.createMovie(
-					items.getJSONObject(i).getString("title"), 
-					items.getJSONObject(i).getString("image"),
-					items.getJSONObject(i).getString("imDbRating"), 
-					items.getJSONObject(i).getString("year"));
+			movie.createMovie(items.getJSONObject(i).getString("title"), items.getJSONObject(i).getString("image"),
+					items.getJSONObject(i).getString("imDbRating"), items.getJSONObject(i).getString("year"));
 			movieList.add(movie);
 		}
+
+		/*
+		 * int i = 0;
+		 * 
+		 * for (Iterator<Movie> iterator = movieList.iterator(); iterator.hasNext();) {
+		 * Movie movie = iterator.next(); i++; System.out.println(i + " => " + movie); }
+		 */
+
+		PrintWriter writer = new PrintWriter(new File("cards.html"));
 		
-		int i = 0;
+		HTMLGenerator generator = new HTMLGenerator(writer);
+		generator.generate(movieList);
 		
-		for (Iterator<Movie> iterator = movieList.iterator(); iterator.hasNext();) {
-			Movie movie = iterator.next();
-			i++;
-			System.out.println(i + " => " + movie);
-		}
+		writer.close();
 	}
 }
