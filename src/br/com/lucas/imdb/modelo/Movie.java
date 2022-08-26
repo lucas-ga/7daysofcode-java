@@ -2,7 +2,7 @@ package br.com.lucas.imdb.modelo;
 
 import br.com.lucas.imdb.interfaces.Content;
 
-public class Movie implements Content {
+public class Movie implements Content, Comparable<Content> {
 
 	private String title;
 	private String urlImage;
@@ -14,6 +14,12 @@ public class Movie implements Content {
 		this.urlImage = urlImage;
 		this.rating = rating;
 		this.year = year;
+	}
+	
+	public int compareTo(Content outro) {
+		
+		return this.rating().compareTo(outro.rating());
+
 	}
 
 	@Override

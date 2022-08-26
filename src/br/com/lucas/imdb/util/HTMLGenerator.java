@@ -30,7 +30,7 @@ public class HTMLGenerator {
 					<h4 class=\"card-header\">%s</h4>
 					<div class=\"card-body\">
 						<img class=\"card-img\" src=\"%s\" alt=\"%s\">
-						<p class=\"card-text mt-2\">Classificação: %s - Ano: %s</p>
+						<p class=\"card-text mt-2\">Nota: %s - Ano: %s</p>
 					</div>
 				</div>
 				""";

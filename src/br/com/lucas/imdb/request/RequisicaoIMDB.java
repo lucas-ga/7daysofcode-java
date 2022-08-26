@@ -1,6 +1,8 @@
 package br.com.lucas.imdb.request;
 
 import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import br.com.lucas.imdb.modelo.Movie;
@@ -16,6 +18,8 @@ public class RequisicaoIMDB {
 		List<Movie> movieList = new ImdbMovieJsonParser(json).parse();
 
 		PrintWriter writer = new PrintWriter("cards.html");
+		
+		Collections.sort(movieList,Comparator.reverseOrder());
 		
 		new HTMLGenerator(writer).generate(movieList);
 		
