@@ -6,9 +6,10 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import br.com.lucas.imdb.interfaces.JsonParser;
 import br.com.lucas.imdb.modelo.Movie;
 
-public class ImdbMovieJsonParser {
+public class ImdbMovieJsonParser implements JsonParser {
 	
 	JSONObject requestBody;
 	List<Movie> movieList = new ArrayList<>();

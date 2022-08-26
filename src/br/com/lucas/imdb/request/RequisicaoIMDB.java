@@ -15,13 +15,6 @@ public class RequisicaoIMDB {
 
 		List<Movie> movieList = new ImdbMovieJsonParser(json).parse();
 
-		/*
-		 * int i = 0;
-		 * 
-		 * for (Iterator<Movie> iterator = movieList.iterator(); iterator.hasNext();) {
-		 * Movie movie = iterator.next(); i++; System.out.println(i + " => " + movie); }
-		 */
-
 		PrintWriter writer = new PrintWriter("cards.html");
 		
 		new HTMLGenerator(writer).generate(movieList);

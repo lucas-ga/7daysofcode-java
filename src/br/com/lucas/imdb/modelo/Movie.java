@@ -1,37 +1,42 @@
 package br.com.lucas.imdb.modelo;
 
-public class Movie {
+import br.com.lucas.imdb.interfaces.Content;
+
+public class Movie implements Content {
 
 	private String title;
-	private String image;
+	private String urlImage;
 	private String rating;
 	private String year;
 
-	public void createMovie(String title, String image, String rating, String year) {
+	public void createMovie(String title, String urlImage, String rating, String year) {
 		this.title = title;
-		this.image = image;
+		this.urlImage = urlImage;
 		this.rating = rating;
 		this.year = year;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Título: "+ this.title + " | Ano: " + this.year + " | Nota: " + this.rating + " | URL Imagem: " + this.image;
-//	}
-
-	public String getTitle() {
+	@Override
+	public String title() {
+		// TODO
 		return title;
 	}
 
-	public String getImage() {
-		return image;
+	@Override
+	public String urlImage() {
+		// TODO
+		return urlImage;
 	}
 
-	public String getRating() {
+	@Override
+	public String rating() {
+		// TODO
 		return rating;
 	}
 
-	public String getYear() {
+	@Override
+	public String year() {
+		// TODO
 		return year;
 	}
 }

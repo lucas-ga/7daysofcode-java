@@ -30,15 +30,15 @@ public class HTMLGenerator {
 					<h4 class=\"card-header\">%s</h4>
 					<div class=\"card-body\">
 						<img class=\"card-img\" src=\"%s\" alt=\"%s\">
-						<p class=\"card-text mt-2\">Nota: %s - Ano: %s</p>
+						<p class=\"card-text mt-2\">Classificação: %s - Ano: %s</p>
 					</div>
 				</div>
 				""";
 
 		for (Iterator<Movie> iterator = movieList.iterator(); iterator.hasNext();) {
 			Movie movie = iterator.next();
-			writer.println(String.format(divTemplate, movie.getTitle(), movie.getImage(), movie.getTitle(),
-					movie.getRating(), movie.getYear()));
+			writer.println(String.format(divTemplate, movie.title(), movie.urlImage(), movie.urlImage(),
+					movie.rating(), movie.year()));
 
 		}
 	}
